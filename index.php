@@ -10,12 +10,17 @@ ini_set('display_errors', '1');
 
 	session_start();
 
-	function check_login(){						//to check if logged in;
+	function check_login(){
 	
-		if (isset($_SESSION['authkey'])){
+		if (isset($_SESSION['authkey'])) {
 
-			if ($_SESSION['authkey']==$_COOKIE['authkey']) // Notice: Undefined index: authkey in /var/www/index.php (i'm getting this error..)
-				return true;
+			if(isset($_COOKIE['authkey'])){
+
+				if ($_SESSION['authkey']==$_COOKIE['authkey']) 
+					return true;
+				else
+					return false;
+			}
 			else
 				return false;
 		}
