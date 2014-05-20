@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html>
 <?php
 ini_set('display_errors', '1');
@@ -8,13 +12,14 @@ ini_set('display_errors', '1');
 
 <?php
 
-	session_start();
+	
+	$msg=" ";
 
 	function check_login(){
 	
-		if (isset($_SESSION['authkey'])) {
+		if (isset($_COOKIE['authkey'])) {
 
-			if(isset($_COOKIE['authkey'])){
+			if(isset($_SESSION['authkey'])){
 
 				if ($_SESSION['authkey']==$_COOKIE['authkey']) 
 					return true;
@@ -31,8 +36,19 @@ ini_set('display_errors', '1');
 	if (check_login()) {							//if logged in, redirect to home pg;
 		header('location: Adminhome.php');
 	}
+	
+	if (isset($_SESSION['authfail'])) {
+		
+		if ($_SESSION['authfail']==1) {
+			
+			$_SESSION['authfail']=0;
+			$msg="Invalid username/password";
+		}
+		else
+			$msg= " ";
+	}
 ?>
-
+<pre><?php echo $msg; ?></pre>
 <pre>Enter username and password: 
 	<form method='post' action='Auth.php'>
 		Username <input type="text" name="user" size="7">

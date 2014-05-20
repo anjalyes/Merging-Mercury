@@ -1,8 +1,8 @@
--- MySQL dump 10.15  Distrib 10.0.10-MariaDB, for debian-linux-gnu (i686)
+-- MySQL dump 10.15  Distrib 10.0.11-MariaDB, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: Admin_Master
 -- ------------------------------------------------------
--- Server version	10.0.10-MariaDB-1~precise-log
+-- Server version	10.0.11-MariaDB-1~precise-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -73,4 +73,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-12 18:14:57
+-- Dump completed on 2014-05-20 15:17:21
