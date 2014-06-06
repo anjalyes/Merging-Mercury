@@ -1,21 +1,21 @@
 <?php
-
 function auth(){
-
+include 'config.php';
+$db_server=new mysqli($db_hostname,$db_username,$db_password,$db_database);
 	if (check()) {
 			
-		$user=fixstring($_POST['user']);
-		$pass=fixstring($_POST['pass']);
+		$user=$_POST['user'];
+		$pass=$_POST['pass'];
 
 		$query="SELECT * FROM Admin_users WHERE Uname='$user'";
-		$result=mysql_query($query);
+		$result=mysqli_query($db_server,$query);
 
 		if(!$result)
-			die("Unable to access db: ".mysql_error());
+			die("Unable to access db: ".mysqli_error($db_server));
 
-		elseif(mysql_num_rows($result)){
+		elseif(mysqli_num_rows($result)){
 
-			$row=mysql_fetch_row($result);
+			$row=mysqli_fetch_row($result);
 
 			if ($pass==$row[3]){
 				
@@ -64,12 +64,12 @@ function check(){
 }
 
 function fixstring($string){
-	return htmlentities(mysql_fix_entities($string));
+	return htmlentities(mysqli_fix_entities($string));
 }
 
-function mysql_fix_entities($string){
+function mysqli_fix_entities($string){
 	if (get_magic_quotes_gpc()) {
 		$string=stripslashes($string);
 	}
-	return mysql_real_escape_string($string);
+	return mysqli_real_escape_string($db_server,$string);
 }

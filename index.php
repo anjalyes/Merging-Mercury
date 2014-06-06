@@ -7,9 +7,12 @@ session_start();
 ini_set('display_errors', '1');
 ?>
 
-<title><?php echo "Login Form"; ?></title>
+<head>
+	<title><?php echo "Login Form"; ?></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
 <body>
-
 <?php
 
 	
@@ -48,13 +51,16 @@ ini_set('display_errors', '1');
 			$msg= " ";
 	}
 ?>
-<pre><?php echo $msg; ?></pre>
-<pre>Enter username and password: 
-	<form method='post' action='Auth.php'>
-		Username <input type="text" name="user" size="7">
-		Password <input type="text" name="pass" size="7">
-				 <input type="submit" value="Log In!"> 
-	</form>
-</pre>
+
+<div id="head"> LOG IN </div>
+<div id="container">
+<form method="post" action="auth.php">
+	<?php echo $msg; ?>
+	<input type="text" name="user" size="7" placeholder="Username"><br>
+	<input type="password" name="pass" size="7" placeholder="Password"><br><br>
+	<input type="submit" value="Log In!" id="submit">
+</form>
+</div>
+<div id="footer">&copy; Copyright by Xincoz Labs 2014 </div>
 </body>
 </html>
