@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 	<title>Add Movie</title>
@@ -17,7 +20,7 @@
 		</label>
 		<label>
 			<span>Movie Description: </span>
-			<textarea></textarea><br>
+			<textarea name="txt"></textarea><br>
 		</label>
 		<label>
 			<span>Cover Img: </span>
@@ -33,12 +36,13 @@
 		</label>
 		<label>
 			<span>Genre: </span>
-			<input type="checkbox" name="comedy" value="comedy">Comedy<br>
-    		<input type="checkbox" name="drama" value="drama">Drama<br>	
+			<input type="checkbox" name="genre[]" value="comedy">Comedy<br>
+    		<input type="checkbox" name="genre[]" value="drama">Drama<br>	
+    		<input type="checkbox" name="genre[]" value="action">Action<br>
 		</label>
 		<label>	
 			<span>Year: </span>
-			<select name="birthyear">
+			<select name="year">
  			<option value="2014">2014</option>
 		    <option value="2013">2013</option>
 			<option value="2012">2012</option>
