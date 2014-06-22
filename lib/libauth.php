@@ -25,9 +25,16 @@ $db_server=new mysqli($db_hostname,$db_username,$db_password,$db_database);
 				$id=uniqid();						//creating new id;
 				$id=md5($id);
 				$_SESSION['authkey']=$id;
-				//if(isset($_COOKIE['authkey']))
+				
+                                
+                                // CORRECTED
+                                setcookie('authkey',$id, time()+60*60*24*30);
+                                /*
 					$_COOKIE['authkey']=$id;
 				//else
+
+
+                                */
 					//die("Error");
 					header('location: Adminhome.php');
 			}
