@@ -14,28 +14,11 @@ ini_set('display_errors', '1');
 </head>
 <body>
 <?php
-
 	
+	include 'lib/check.php';
 	$msg=" ";
 
-	function check_login(){
 	
-		if (isset($_COOKIE['authkey'])) {
-
-			if(isset($_SESSION['authkey'])){
-
-				if ($_SESSION['authkey']==$_COOKIE['authkey']) 
-					return true;
-				else
-					return false;
-			}
-			else
-				return false;
-		}
-		else
-			return false;
-	}
-
 	if (check_login()) {							//if logged in, redirect to home pg;
 		header('location: Adminhome.php');
 	}

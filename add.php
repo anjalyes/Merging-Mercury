@@ -1,5 +1,9 @@
 <?php
 session_start();
+include 'lib/check.php';
+	if (!check_login()) {
+		header('location: index.php');
+	}
 ?>
 <html>
 <head>

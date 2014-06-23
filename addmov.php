@@ -1,13 +1,21 @@
-
 <html>
 <head>
 <?php
+session_start();
 ini_set('display_errors', '1');
 ?>
+<title>Processing...</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+	<div id="head"></div>
 <?php
 	include 'config.php';
+	include 'lib/check.php';
+	if (!check_login()) {
+		header('location: index.php');
+	}
+
 	$db_server=new mysqli($db_hostname,$db_username,$db_password,$db_database);
 
 	function checkvalid()
@@ -38,7 +46,7 @@ ini_set('display_errors', '1');
 	if (checkvalid()) {
 		$na=$_POST['name'];
 		$tg=$_POST['tags'];
-		$tx=$_POST['txt'];
+		$tx=addslashes($_POST['txt']);
 		$pi=$_POST['pic'];
 		$po=$_POST['poster'];
 		
@@ -50,7 +58,10 @@ ini_set('display_errors', '1');
 		if(!$result){
 			die("Unable to access db: ".mysqli_error($db_server));
 		}
-
+	}
+	else
+		echo "Please fill all fields";
 ?>
+<div id="footer">&copy; Copyright by Xincoz Labs 2014 </div>
 </body>
 </html>

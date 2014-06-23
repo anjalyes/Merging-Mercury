@@ -4,8 +4,8 @@ include 'config.php';
 $db_server=new mysqli($db_hostname,$db_username,$db_password,$db_database);
 	if (check()) {
 			
-		$user=$_POST['user'];
-		$pass=$_POST['pass'];
+		$user=addslashes($_POST['user']);
+		$pass=addslashes($_POST['pass']);
 
 		$query="SELECT * FROM Admin_users WHERE Uname='$user'";
 		$result=mysqli_query($db_server,$query);
